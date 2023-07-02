@@ -2,13 +2,17 @@
   import type { Option } from "../types";
 
   export let type: Option;
+  export let winner: boolean;
   export let onClick: (type: Option) => void = null;
 </script>
 
 {#if onClick}
-  <button on:click={() => onClick(type)} class={`hand small ${type}`} />
+  <button
+    on:click={() => onClick(type)}
+    class={`hand small ${type} ${winner ? "winner" : ""}`}
+  />
 {:else}
-  <button class={`hand big ${type}`} />
+  <button class={`hand big ${type} ${winner ? "winner" : ""}`} />
 {/if}
 
 <style>
@@ -84,6 +88,11 @@
       background-color: #db2e4d;
       box-shadow: 0 4px 0 0 #9d1634;
 
+      &.winner {
+        box-shadow: 0 4px 0 0 #9d1634, 0 0 0 65px rgb(255 255 255 / 5%),
+          0 0 0 135px rgb(255 255 255 / 5%), 0 0 0 218px rgb(255 255 255 / 5%);
+      }
+
       &.small {
         justify-self: center;
       }
@@ -99,6 +108,11 @@
       grid-row: 2;
       background-color: #4664f4;
       box-shadow: 0 4px 0 0 #2a45c2;
+
+      &.winner {
+        box-shadow: 0 4px 0 0 #2a45c2, 0 0 0 65px rgb(255 255 255 / 5%),
+          0 0 0 135px rgb(255 255 255 / 5%), 0 0 0 218px rgb(255 255 255 / 5%);
+      }
 
       &.small {
         justify-self: flex-start;
@@ -118,6 +132,11 @@
       background-color: #eb9f0e;
       box-shadow: 0 4px 0 0 #c76c1b;
 
+      &.winner {
+        box-shadow: 0 4px 0 0 #c76c1b, 0 0 0 65px rgb(255 255 255 / 5%),
+          0 0 0 135px rgb(255 255 255 / 5%), 0 0 0 218px rgb(255 255 255 / 5%);
+      }
+
       &.small {
         justify-self: flex-end;
         align-self: flex-start;
@@ -136,6 +155,11 @@
       background-color: #3fb7cd;
       box-shadow: 0 4px 0 0 #2d8dab;
 
+      &.winner {
+        box-shadow: 0 4px 0 0 #2d8dab, 0 0 0 65px rgb(255 255 255 / 5%),
+          0 0 0 135px rgb(255 255 255 / 5%), 0 0 0 218px rgb(255 255 255 / 5%);
+      }
+
       &.small {
         justify-self: center;
       }
@@ -151,6 +175,11 @@
       grid-row: 3;
       background-color: #834ee3;
       box-shadow: 0 4px 0 0 #5f37a8;
+
+      &.winner {
+        box-shadow: 0 4px 0 0 #5f37a8, 0 0 0 65px rgb(255 255 255 / 5%),
+          0 0 0 135px rgb(255 255 255 / 5%), 0 0 0 218px rgb(255 255 255 / 5%);
+      }
 
       &.small {
         justify-self: center;

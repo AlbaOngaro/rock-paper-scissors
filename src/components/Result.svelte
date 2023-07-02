@@ -25,7 +25,7 @@
 <section class={`grid ${$status ? "wide" : ""}`}>
   <h5 class="player">YOU PICKED</h5>
   <article class="choice player">
-    <Hand type={$state.player} />
+    <Hand type={$state.player} winner={$status === "victory"} />
   </article>
 
   {#if $status}
@@ -50,7 +50,7 @@
   <h5 class="house">THE HOUSE PICKED</h5>
   <article class="choice house">
     {#if $state.house}
-      <Hand type={$state.house} />
+      <Hand type={$state.house} winner={$status === "defeat"} />
     {:else}
       <span class="empty" />
     {/if}
