@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { options } from "../utils/constants";
   import Hand from "./Hand.svelte";
   import type { Option } from "../types";
 
@@ -13,9 +14,9 @@
 </script>
 
 <article>
-  <Hand onClick={onPlayerPick} type="paper" />
-  <Hand onClick={onPlayerPick} type="scissors" />
-  <Hand onClick={onPlayerPick} type="rock" />
+  {#each options as option}
+    <Hand onClick={onPlayerPick} type={option} />
+  {/each}
 </article>
 
 <style>
