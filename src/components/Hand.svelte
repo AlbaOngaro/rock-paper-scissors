@@ -47,15 +47,17 @@
       width: 100%;
       border-radius: 300px;
       background-color: white;
-      box-shadow: inset 0 10px #babfd4;
+      box-shadow: inset 0 4px #babfd4;
       background-position: center;
       background-repeat: no-repeat;
+      background-size: 40%;
     }
 
     &.small {
-      width: 200px;
-      height: 200px;
-      padding: 24px;
+      width: 145px;
+      height: 145px;
+      padding: 16px;
+      align-self: center;
 
       &:hover {
         cursor: pointer;
@@ -76,11 +78,33 @@
       }
     }
 
+    &.rock {
+      grid-column: 3;
+      grid-row: 1;
+      background-color: #db2e4d;
+      box-shadow: 0 4px 0 0 #9d1634;
+
+      &.small {
+        justify-self: center;
+      }
+
+      &::after {
+        content: "";
+        background-image: url("../assets/images/icon-rock.svg");
+      }
+    }
+
     &.paper {
       grid-column: 1;
-      grid-row: 1;
+      grid-row: 2;
       background-color: #4664f4;
-      box-shadow: 0 10px 0 0 #2a45c2;
+      box-shadow: 0 4px 0 0 #2a45c2;
+
+      &.small {
+        justify-self: flex-start;
+        align-self: flex-start;
+        margin-top: -36px;
+      }
 
       &::after {
         content: "";
@@ -89,10 +113,16 @@
     }
 
     &.scissors {
-      grid-column: 3;
-      grid-row: 1;
+      grid-column: 5;
+      grid-row: 2;
       background-color: #eb9f0e;
-      box-shadow: 0 10px 0 0 #c76c1b;
+      box-shadow: 0 4px 0 0 #c76c1b;
+
+      &.small {
+        justify-self: flex-end;
+        align-self: flex-start;
+        margin-top: -36px;
+      }
 
       &::after {
         content: "";
@@ -100,15 +130,35 @@
       }
     }
 
-    &.rock {
+    &.spock {
       grid-column: 2;
-      grid-row: 2;
-      background-color: #db2e4d;
-      box-shadow: 0 10px 0 0 #9d1634;
+      grid-row: 3;
+      background-color: #3fb7cd;
+      box-shadow: 0 4px 0 0 #2d8dab;
+
+      &.small {
+        justify-self: center;
+      }
 
       &::after {
         content: "";
-        background-image: url("../assets/images/icon-rock.svg");
+        background-image: url("../assets/images/icon-spock.svg");
+      }
+    }
+
+    &.lizard {
+      grid-column: 4;
+      grid-row: 3;
+      background-color: #834ee3;
+      box-shadow: 0 4px 0 0 #5f37a8;
+
+      &.small {
+        justify-self: center;
+      }
+
+      &::after {
+        content: "";
+        background-image: url("../assets/images/icon-lizard.svg");
       }
     }
   }

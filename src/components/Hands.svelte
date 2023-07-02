@@ -22,12 +22,12 @@
 <style>
   article {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     margin: 0 auto;
     width: 476px;
     height: 430px;
     flex-shrink: 0;
-    background-image: url("../assets/images/bg-triangle.svg");
+    background-image: url("../assets/images/bg-pentagon.svg");
     background-position: center;
     background-repeat: no-repeat;
   }

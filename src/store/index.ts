@@ -20,9 +20,11 @@ export const status = derived<Writable<State>, Status>(state, ($state) => {
 	}
 
 	if (
-		($state.player === "rock" && $state.house === "scissors") ||
-		($state.player === "paper" && $state.house === "rock") ||
-		($state.player === "scissors" && $state.house === "paper")
+		($state.player === "rock" && ["scissors", "lizard"].includes($state.house)) ||
+		($state.player === "paper" && ["rock", "spock"].includes($state.house)) ||
+		($state.player === "scissors" && ["paper", "lizard"].includes($state.house)) ||
+		($state.player === "lizard" && ["spock", "paper"].includes($state.house)) ||
+		($state.player === "spock" && ["scissors", "rock"].includes($state.house))
 	) {
 		return "victory";
 	}

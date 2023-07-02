@@ -1,6 +1,6 @@
 <script>
   import iconClose from "../assets/images/icon-close.svg";
-  import rulesImage from "../assets/images/image-rules.svg";
+  import rulesImage from "../assets/images/image-rules-bonus.svg";
   import { onMount } from "svelte";
 
   let dialog; // Reference to the dialog tag
@@ -79,12 +79,13 @@
 
   .dialog {
     width: 400px;
-    height: 415px;
+    height: 461px;
     flex-shrink: 0;
     border-radius: 8px;
     background: #fff;
     box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.2);
     padding: 32px;
+    border: none;
 
     & header {
       display: flex;
