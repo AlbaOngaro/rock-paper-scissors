@@ -58,10 +58,15 @@
     }
 
     &.small {
-      width: 145px;
-      height: 145px;
+      width: 96px;
+      height: 96px;
       padding: 16px;
       align-self: center;
+
+      @media (min-width: 768px) {
+        width: 145px;
+        height: 145px;
+      }
 
       &:hover {
         cursor: pointer;

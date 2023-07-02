@@ -1,5 +1,5 @@
 <script lang="ts">
-  import rpsLogo from "../assets/images/logo.svg";
+  import rpsLogo from "../assets/images/logo-bonus.svg";
   import { state } from "../store";
 </script>
 
@@ -13,16 +13,20 @@
 
 <style>
   header {
-    width: 700px;
+    max-width: 700px;
     flex-shrink: 0;
     border-radius: 15px;
     border: 3px solid rgba(255, 255, 255, 0.29);
     padding: 16px 24px;
-    margin: 48px auto 64px;
+    margin: 48px 16px 64px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
+    @media (min-width: 768px) {
+      margin: 48px auto 64px;
+    }
 
     & .score {
       border-radius: 8px;
