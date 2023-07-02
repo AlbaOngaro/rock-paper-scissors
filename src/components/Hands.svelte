@@ -2,7 +2,14 @@
   import Hand from "./Hand.svelte";
   import type { Option } from "../types";
 
-  export let onPlayerPick: (option: Option) => void;
+  import { state } from "../store";
+
+  function onPlayerPick(player: Option) {
+    state.update((curr) => ({
+      ...curr,
+      player,
+    }));
+  }
 </script>
 
 <article>

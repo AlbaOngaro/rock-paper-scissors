@@ -1,24 +1,23 @@
 <script lang="ts">
   import rpsLogo from "../assets/images/logo.svg";
-  export let score: number;
+  import { state } from "../store";
 </script>
 
 <header>
   <img src={rpsLogo} alt="logo" />
   <div class="score">
     <small> SCORE </small>
-    <strong>{score}</strong>
+    <strong>{$state.score}</strong>
   </div>
 </header>
 
 <style>
   header {
     width: 700px;
-    height: 150px;
     flex-shrink: 0;
     border-radius: 15px;
     border: 3px solid rgba(255, 255, 255, 0.29);
-    padding: 32px;
+    padding: 16px 24px;
     margin: 48px auto 64px;
     display: flex;
     flex-direction: row;

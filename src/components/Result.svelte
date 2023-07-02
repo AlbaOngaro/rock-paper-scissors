@@ -1,72 +1,40 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { writable, type Writable } from "svelte/store";
 
   import { getRandomOption } from "../utils/getRandomOption";
-  import type { Option, Status } from "../types";
+  import { state, status } from "../store";
   import Hand from "./Hand.svelte";
 
-  let house: Option = null;
-  let houseW = writable<Option>(null);
-
-  let status: Status = null;
-
   onMount(() => {
-    setTimeout(() => {
-      houseW.set(getRandomOption());
-    }, 1000);
-  });
-
-  houseW.subscribe((value) => {
-    house = value;
-
-    if (value) {
-      if (
-        (player === "rock" && value === "scissors") ||
-        (player === "paper" && value === "rock") ||
-        (player === "scissors" && value === "paper")
-      ) {
-        score.update((curr) => curr + 1);
-        status = "victory";
-      } else if (player === value) {
-        status = "tie";
-      } else {
-        score.update((curr) => {
-          if (curr - 1 > 0) {
-            return curr - 1;
-          }
-
-          return 0;
-        });
-        status = "defeat";
-      }
-    }
+    state.update((curr) => ({
+      ...curr,
+      house: getRandomOption(),
+    }));
   });
 
   function reset() {
-    resetPlayer();
-    houseW.set(null);
-    status = null;
+    state.update((curr) => ({
+      ...curr,
+      player: null,
+      house: null,
+      status: null,
+    }));
   }
-
-  export let resetPlayer: () => void;
-  export let player: Option;
-  export let score: Writable<number>;
 </script>
 
-<section class={`grid ${status ? "wide" : ""}`}>
+<section class={`grid ${$status ? "wide" : ""}`}>
   <h5 class="player">YOU PICKED</h5>
   <article class="choice player">
-    <Hand type={player} />
+    <Hand type={$state.player} />
   </article>
 
-  {#if status}
-    {#if status === "victory"}
+  {#if $status}
+    {#if $status === "victory"}
       <div class="status">
         <h3>You Win!</h3>
         <button on:click={reset}>play again</button>
       </div>
-    {:else if status === "tie"}
+    {:else if $status === "tie"}
       <div class="status">
         <h3>Tie!</h3>
         <button on:click={reset}>play again</button>
@@ -81,8 +49,8 @@
 
   <h5 class="house">THE HOUSE PICKED</h5>
   <article class="choice house">
-    {#if house}
-      <Hand type={house} />
+    {#if $state.house}
+      <Hand type={$state.house} />
     {:else}
       <span class="empty" />
     {/if}
@@ -95,6 +63,7 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     width: 700px;
     margin: 0 auto;
+    transition: all 0.3s ease-in-out;
 
     &.wide {
       width: 1400px;
